@@ -1,0 +1,39 @@
+name: Generate RSS
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Every day
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate RSS
+        run: node script.js
+
+      - name: Commit and push if there are changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions@github.com"
+            git add *.rss.xml
+            git commit -m "Update RSS feeds"
+            git push
+          else
+            echo "No changes to commit."
+          fi

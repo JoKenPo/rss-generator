@@ -1,0 +1,12 @@
+[
+  {
+    "title": "ZZZ Codes",
+    "url": "https://www.pockettactics.com/zenless-zone-zero/codes",
+    "selector": "div[role] > main > article.not-listing.post-71273.guide.type-guide.status-publish.has-post-thumbnail.hentry.category-zenless-zone-zero > div.entry-content > ul > li > strong"
+  },
+  {
+    "title": "Genshin Impact Codes",
+    "url": "https://www.pockettactics.com/genshin-impact/codes",
+    "selector": "div[role] > main > article.not-listing.post-6906.guide.type-guide.status-publish.has-post-thumbnail.hentry.category-genshin-impact > div.entry-content > ul > li > strong"
+  }
+]

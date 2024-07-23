@@ -7,8 +7,8 @@ This repository contains a Node.js script that generates RSS feeds from HTML pag
 ## Setup
 1. #### Clone the repository:
    ```bash
-    git clone https://github.com/your-repo/rss-feed-generator.git
-    cd rss-feed-generator
+    git clone https://github.com/JoKenPo/rss-generator.git
+    cd rss-generator
     ```
 2. #### Install dependencies:
    ```bash

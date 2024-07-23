@@ -28,12 +28,13 @@ jobs:
 
       - name: Commit and push if there are changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config --global user.name "github-actions"
-            git config --global user.email "github-actions@github.com"
-            git add *.rss.xml
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          if [ -n "$(git status rss/*.rss.xml --porcelain)" ]; then
+            git add rss/*.rss.xml
             git commit -m "Update RSS feeds"
             git push
           else
             echo "No changes to commit."
           fi
+

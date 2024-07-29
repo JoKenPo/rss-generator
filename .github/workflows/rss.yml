@@ -5,7 +5,8 @@ on:
     - cron: "0 0 * * *" # Every day
   push:
     branches:
-      - main
+      - master
+  workflow_dispatch:
 
 jobs:
   build:

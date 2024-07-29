@@ -34,7 +34,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           if [ -n "$(git status rss/*.rss.xml --porcelain)" ]; then
             git add rss/*.rss.xml
-            git commit -m "Update RSS feeds"
+            git commit -m "feed: update RSS feeds"
             git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
           else
             echo "No changes to commit."

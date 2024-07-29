@@ -35,7 +35,12 @@ This repository contains a Node.js script that generates RSS feeds from HTML pag
     - **url**: The URL of the page to scrape. The script will fetch the HTML from this URL.
     - **selector**: A CSS selector used to extract relevant content from the HTML page. This selector should match the HTML elements that contain the feed items.
 4. #### GitHub Actions Configuration:
-   The `.github/workflows/rss.yml` file is already set up to run the script periodically and push updates to the repository. You don’t need to modify this file unless you want to change the schedule or branch.
+   The `.github/workflows/rss.yml` file is already set up to run the script periodically and push updates to the repository. You need to add a Personal Access Token (PAT) as a secret in your repository settings:
+
+    - Go to "Settings" > "Secrets and variables" > "Actions".
+    - Click "New repository secret".
+    - Name the secret GH_TOKEN and paste your PAT.
+
 
 ## Running Locally
 To test the script locally, you can run:

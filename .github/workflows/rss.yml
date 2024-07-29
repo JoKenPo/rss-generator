@@ -27,14 +27,15 @@ jobs:
         run: node script.js
 
       - name: Commit and push if there are changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           if [ -n "$(git status rss/*.rss.xml --porcelain)" ]; then
             git add rss/*.rss.xml
             git commit -m "Update RSS feeds"
-            git push
+            git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
           else
             echo "No changes to commit."
           fi
-

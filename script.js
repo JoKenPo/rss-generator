@@ -9,17 +9,15 @@ async function fetchPage(url) {
   const response = await axios.get(url);
   return response.data;
 }
-
-function parseHtml(html, selector) {
+function parseHtml(html, selector, url) {
   const $ = cheerio.load(html);
   const items = [];
 
   $(selector).each((index, element) => {
     const title = $(element).text();
-    const link =
-      $(element).closest("article").find("a").attr("href") ||
-      "http://www.example.com";
-    const description = $(element).closest("ul").text() || $(element).text();
+    const encodedTitle = encodeURIComponent(title);
+    const link = `${url}#:~:text=${encodedTitle}` || "http://www.example.com";
+    const description = $(element).closest("ul").text().trim() || title;
 
     items.push({
       title,
@@ -67,7 +65,7 @@ async function processFeeds() {
   for (const feedConfig of feedsConfig) {
     try {
       const html = await fetchPage(feedConfig.url);
-      const items = parseHtml(html, feedConfig.selector);
+      const items = parseHtml(html, feedConfig.selector, feedConfig.url);
       const newRss = createRssFeed(feedConfig, items);
 
       const filename = `${feedConfig.title
